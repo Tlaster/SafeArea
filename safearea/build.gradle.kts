@@ -13,6 +13,8 @@ group = "moe.tlaster"
 version = "0.1.0"
 
 kotlin {
+    macosX64()
+    macosArm64()
     ios("uikit")
     android {
         publishLibraryVariants("release", "debug")
@@ -37,6 +39,21 @@ kotlin {
                 implementation("androidx.compose.ui:ui:1.2.0-rc03")
                 implementation("androidx.compose.foundation:foundation:1.2.0-rc03")
             }
+        }
+        val desktopMain by creating {
+            dependsOn(commonMain)
+        }
+        val jvmMain by getting {
+            dependsOn(desktopMain)
+        }
+        val macosMain by creating {
+            dependsOn(desktopMain)
+        }
+        val macosX64Main by getting {
+            dependsOn(macosMain)
+        }
+        val macosArm64Main by getting {
+            dependsOn(macosMain)
         }
     }
 }
