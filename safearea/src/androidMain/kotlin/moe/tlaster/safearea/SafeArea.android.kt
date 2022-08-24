@@ -1,7 +1,6 @@
 package moe.tlaster.safearea
 
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.layout.statusBars
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.NonRestartableComposable
 
@@ -20,4 +19,4 @@ actual val WindowInsets.Companion.endBar: WindowInsets
 actual val WindowInsets.Companion.bottomBar: WindowInsets
     @Composable
     @NonRestartableComposable
-    get() = WindowInsets.navigationBars
+    get() = WindowInsets.navigationBars.union(WindowInsets.ime)
